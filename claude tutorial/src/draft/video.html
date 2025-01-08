@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+</head>
+<body>
+  <h1>Autoplay Video</h1>
+  <iframe id="videoFrame" width="640" height="480" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <script>
+    // Get the video URL from the script
+    function setVideoUrl(url) {
+      var iframe = document.getElementById('videoFrame');
+      iframe.src = url;
+    }
+    
+    // Function to receive the URL and set it
+    google.script.run.withSuccessHandler(setVideoUrl).getVideoUrl();
+  </script>
+</body>
+</html>

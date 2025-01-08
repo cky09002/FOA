@@ -1,0 +1,136 @@
+/* General Page Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('https://img.freepik.com/premium-photo/wood-floor-supermarket-blur-background_36078-702.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 20px;
+  color: #fff; /* Adjust text color for better visibility on background */
+}
+
+h1 {
+  text-align: center;
+  color: #050301;
+  font-size: 3em; /* Bigger font size */
+  animation: fadeIn 2s ease-in-out; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#marketplace {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+  border: 1px solid #444;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  width: 250px; /* Adjusted width */
+  transition: transform 0.2s;
+}
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+.item-image img {
+  width: 100%;
+  height: auto;
+}
+
+.item-details {
+  padding: 10px;
+  text-align: center;
+}
+
+.item-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff; /* White text for contrast */
+}
+
+.item-price {
+  color: #e74c3c;
+  margin-bottom: 5px;
+}
+
+.item-quantity {
+  color: #ccc; /* Lighter gray for contrast */
+  margin-bottom: 10px;
+}
+
+.buy-button {
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buy-button:hover {
+  background-color: #1e8449; /* Darker hover state */
+}
+
+.out-of-stock {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

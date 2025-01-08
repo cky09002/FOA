@@ -1,0 +1,76 @@
+function confirmPurchase(name) {
+  // Prompt user to confirm purchase
+  if (confirm("确认购买吗？")) {
+    // Prompt user to input their number
+    var inputNumber = prompt("请输入您的号码:");
+
+    if (inputNumber) {
+      // Validate the input number (example: must be a number)
+      if (isNaN(inputNumber) || inputNumber.trim() === "") {
+        alert("请输入有效的号码。");
+        return;
+      }
+
+      // Call the server-side function with the item name and input number
+      google.script.run
+        .withSuccessHandler(function(response) {
+          if (response === "Purchase recorded successfully.") {
+            alert("恭喜购买成功！");
+          } else {
+            alert(response); // Show other responses or errors
+          }
+        })
+        .withFailureHandler(function(error) {
+          alert("Error: " + error.message);
+        })
+        .purchaseItem(name, inputNumber);
+    } else {
+      alert("请输入有效的号码。");
+    }
+  }
+}
+
+// Function to start the Dino game
+function startGame() {
+  var dinoGameURL = 'https://trex-runner.com/';
+  var win = window.open(dinoGameURL, '_blank');
+  
+  if (!win || win.closed || typeof win.closed === 'undefined') {
+    alert("Unable to open the Dino game. You can try accessing it by typing 'chrome://dino' directly in your Chrome browser address bar.");
+  }
+}
+
+
+// Function to start the Dino game
+function startGame() {
+  var dinoGameURL = 'https://trex-runner.com/';
+  var win = window.open(dinoGameURL, '_blank');
+  
+  if (!win || win.closed || typeof win.closed === 'undefined') {
+    alert("Unable to open the Dino game. You can try accessing it by typing 'chrome://dino' directly in your Chrome browser address bar.");
+  }
+}
+
+// Function to fetch and display the scam page content
+function goToScamPage() {
+  google.script.run.withSuccessHandler(function(content) {
+    var modal = document.getElementById('scamModal');
+    var modalContent = document.getElementById('scamModalContent');
+    modalContent.innerHTML = content;
+    modal.style.display = 'block';
+  }).getScamPage();
+}
+
+// Function to close the modal
+function closeModal() {
+  var modal = document.getElementById('scamModal');
+  modal.style.display = 'none';
+}
+
+// Close the modal if user clicks outside of it
+window.onclick = function(event) {
+  var modal = document.getElementById('scamModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}

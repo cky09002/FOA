@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Example</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('https://media.istockphoto.com/id/1421735894/photo/storm-in-bangkok.webp?b=1&s=170667a&w=0&k=20&c=sXsfy0Q-QnTSjTNxmeHZTXV4cup1L4qMB7Hrg5vO2Nw=');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .title {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            animation: fadeInOut 6s ease-in-out infinite;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 1200px;
+            gap: 20px;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Increased gap between buttons */
+            flex: 1;
+            text-align: center; /* Center the text within button groups */
+            margin: 40px 0; /* Increased top and bottom margin */
+        }
+        .button-group.middle {
+            flex: 1;
+        }
+        .button-group.right {
+            flex: 1;
+            text-align: center; /* Center the text within button groups */
+        }
+        .button-group button {
+            padding: 20px 40px; /* Increased padding for larger buttons */
+            font-size: 20px; /* Increased font size for larger text */
+            border: none;
+            border-radius: 10px; /* Increased border-radius for more rounded buttons */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            background: linear-gradient(45deg, #6cc4ff, #3a8dff);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Increased box-shadow for more depth */
+            width: 100%;
+        }
+        .button-group button:hover {
+            background-color: #4a72d0;
+            transform: translateY(-2px);
+        }
+        .button-group button:active {
+            background-color: #3a8dff;
+            transform: translateY(1px);
+        }
+        .button-group button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+        }
+        .subtitle {
+            font-size: 35px; /* Increased font size for subtitle */
+            font-weight: bold;
+            margin-bottom: 30px; /* Increased bottom margin */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            display: inline-block; /* Center horizontally within its parent */
+        }
+        .button-group.right .subtitle {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">阴云密布之日，黑夜永续之时</div>
+    <div class="container">
+        <div class="button-group">
+            <div class="subtitle">庇护所</div>
+            <button onclick="openShelter('shelter1')">庇护所 1</button>
+            <button onclick="openShelter('shelter2')">庇护所 2</button>
+            <button onclick="openShelter('shelter3')">庇护所 3</button>
+            <button onclick="openShelter('shelter4')">庇护所 4</button>
+        </div>
+        <div class="button-group middle">
+            <div class="subtitle">庇护所</div>
+            <button onclick="openShelter('shelter5')">庇护所 5</button>
+            <button onclick="openShelter('shelter6')">庇护所 6</button>
+            <button onclick="openShelter('shelter7')">庇护所 7</button>
+            <button onclick="openShelter('shelter8')">庇护所 8</button>
+        </div>
+        <div class="button-group right">
+            <div class="subtitle">特殊区域</div>
+            <button onclick="openMarketplace()">商店</button>
+            <!--<button onclick="openLaboratory()">实验室</button>-->
+            <button onclick="openMedical()">医疗所</button>
+            <button onclick="openReward()">奖励处</button>
+        </div>
+    </div>
+
+    <script>
+        function openShelter(shelterId) {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbw0zQ7u-aVGRwKpXfAhUWyg8_6O462yGbmNdPXPCyg/dev';
+            window.open(`${webAppUrl}?view=${shelterId}`, '_blank');
+        }
+
+        function openMarketplace() {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbw0zQ7u-aVGRwKpXfAhUWyg8_6O462yGbmNdPXPCyg/dev';
+            window.open(`${webAppUrl}?view=marketplace`, '_blank');
+        }
+
+        function openLaboratory() {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbw0zQ7u-aVGRwKpXfAhUWyg8_6O462yGbmNdPXPCyg/dev';
+            window.open(`${webAppUrl}?view=laboratory`, '_blank');
+        }
+
+        function openMedical() {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbw0zQ7u-aVGRwKpXfAhUWyg8_6O462yGbmNdPXPCyg/dev';
+            window.open(`${webAppUrl}?view=medical`, '_blank');
+        }
+
+        function openReward() {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbw0zQ7u-aVGRwKpXfAhUWyg8_6O462yGbmNdPXPCyg/dev';
+            window.open(`${webAppUrl}?view=reward`, '_blank');
+        }
+    </script>
+</body>
+</html>

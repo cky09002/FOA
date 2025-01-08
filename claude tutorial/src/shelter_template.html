@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>庇护所 <?= shelterNumber ?></title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://img.freepik.com/free-photo/view-apocalyptic-dark-clouds_23-2151065802.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722038400&semt=ais_user') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      font-size: 6em;
+      color: white;
+      animation: tremble 1s infinite;
+      margin: 0;
+    }
+
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 5em;
+      opacity: 0;
+      margin: 0;
+      transition: opacity 2s ease;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .opacity-0 {
+      opacity: 0;
+    }
+
+    .bar-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      height: 80px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bar {
+      height: 5vh;
+      transition: width 1s ease-in-out;
+    }
+
+    .light {
+      background-color: green;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .dark {
+      background-color: red;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 0 5px 5px 0;
+    }
+
+    .light-text {
+      color: green;
+    }
+
+    .dark-text {
+      color: red;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      background-color: #333;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    @keyframes tremble {
+      0% { transform: translateX(-1px); }
+      25% { transform: translateX(1px); }
+      50% { transform: translateX(-1px); }
+      75% { transform: translateX(1px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes fadeInGrow {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    .fadein-grow {
+      animation: fadeInGrow 5s forwards;
+    }
+
+    .rate-container {
+      margin: 20px;
+    }
+
+    .rate-display {
+      font-size: 2em;
+      color: white;
+      margin: 10px 0;
+    }
+
+    #infection-rate, #recovery-rate {
+      transition: opacity 0.5s ease;
+    }
+
+    /* Modal styles */
+   /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8); /* Darker overlay */
+      padding-top: 60px;
+      opacity: 0; /* Start as invisible */
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .modal.show {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background-color: #282c34; /* Dark background for the modal */
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px; /* Rounded corners */
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #f0f0f0; /* Light text color */
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Subtle shadow */
+      transform: scale(0.9); /* Start smaller */
+      transition: transform 0.3s ease, opacity 0.5s ease;
+      opacity: 1; /* Ensure visibility */
+    }
+
+    .modal-content.show {
+      transform: scale(1); /* Scale to full size */
+      opacity: 1;
+    }
+
+    .modal-content #event-type {
+      font-size: 4em; /* Larger font size for event type */
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .modal-content #event-name {
+      font-size: 3em; /* Larger font size for event name */
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .modal-content #event-description {
+      font-size: 2em; /* Smaller font size for event description */
+      margin: 10px 0;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #f0f0f0;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>庇护所 <?= shelterNumber ?></h1>
+  <h2 id="owner-height" style="opacity: 0">归属</h2>
+  <h2 id="owner" class="hidden fadein-grow"><?= owner ?></h2>
+  <div style="height:20px"><!-- Margin --></div>
+
+  <div class="bar-container">
+    <div id="light-bar" class="bar light" style="width: 0%"></div>
+    <div id="dark-bar" class="bar dark" style="width: 0%"></div>
+  </div>
+
+  <div class="button-container">
+    <button id="owner-button" onclick="revealOwner()">显示归属</button>
+    <button id="proportion-button" onclick="revealProportion()">显示比例</button>
+    <button id="infection-button" onclick="revealInfectionRate()">显示感染率</button>
+    <button id="recovery-button" onclick="revealRecoveryRate()">显示治愈率</button>
+    <button id="event-button" onclick="showEvent()">紧急事件</button>
+  </div>
+
+  <div class="rate-container">
+    <div id="infection-rate" class="rate-display opacity-0"></div>
+    <div id="recovery-rate" class="rate-display opacity-0"></div>
+  </div>
+
+  <!-- The Modal -->
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p id="event-type"></p>
+      <p id="event-name"></p>
+      <p id="event-description"></p>
+    </div>
+  </div>
+
+  <script>
+    var infectionRate = <?= infectionRate ?>;
+    var recoveryRate = <?= recoveryRate ?>;
+
+    function revealOwner() {
+      var ownerElement = document.getElementById('owner');
+      var ownerText = ownerElement.textContent.trim();
+      
+      if (ownerText === "光明") {
+        ownerElement.classList.add('light-text');
+        ownerElement.classList.remove('dark-text');
+      } else if (ownerText === "黑暗") {
+        ownerElement.classList.add('dark-text');
+        ownerElement.classList.remove('light-text');
+      }
+
+      ownerElement.style.opacity = '1';
+      ownerElement.classList.remove('hidden');
+
+      document.getElementById('owner-height').classList.add('hidden');
+      document.getElementById('owner-button').classList.add('hidden');
+    }
+
+    function revealProportion() {
+      var lightCount = +<?= lightCount ?>;
+      var darkCount = +<?= darkCount ?>;
+      var total = lightCount + darkCount;
+
+      var lightBar = document.getElementById('light-bar');
+      var darkBar = document.getElementById('dark-bar');
+
+      var lightWidth = (lightCount / total) * 100;
+      var darkWidth = (darkCount / total) * 100;
+
+      lightBar.style.width = lightWidth + '%';
+      darkBar.style.width = darkWidth + '%';
+
+      lightBar.classList.remove('hidden');
+      darkBar.classList.remove('hidden');
+
+      document.getElementById('proportion-button').classList.add('hidden');
+    }
+
+    var infectionRateElement = document.getElementById('infection-rate');
+    infectionRateElement.textContent = "感染率：" + (infectionRate * 100).toFixed(2) + "%";
+    function revealInfectionRate() {
+      infectionRateElement.classList.remove('opacity-0');
+      document.getElementById('infection-button').classList.add('hidden');
+    }
+
+    var recoveryRateElement = document.getElementById('recovery-rate');
+    recoveryRateElement.textContent = "恢复率：" + (recoveryRate * 100).toFixed(2) + "%";
+    function revealRecoveryRate() {
+      recoveryRateElement.classList.remove('opacity-0');
+      document.getElementById('recovery-button').classList.add('hidden');
+    }
+
+    function showEvent() {
+      var eventName = "<?= eventName ?>";
+      var eventDescription = "<?= eventDescription ?>";
+      var eventType = "<?= eventType ?>";
+
+      // Update event type styling
+      var eventTypeElement = document.getElementById('event-type');
+      eventTypeElement.textContent = eventType;
+      if (eventType.toLowerCase().includes('positive')) {
+        eventTypeElement.style.color = 'green';
+      } else if (eventType.toLowerCase().includes('negative')) {
+        eventTypeElement.style.color = 'red';
+      } else {
+        eventTypeElement.style.color = 'white'; // Default color if neither
+      }
+
+      // Update event name styling
+      var eventNameElement = document.getElementById('event-name');
+      eventNameElement.textContent = eventName;
+      if (eventName.toLowerCase().includes('positive')) {
+        eventNameElement.style.color = 'green';
+      } else if (eventName.toLowerCase().includes('negative')) {
+        eventNameElement.style.color = 'red';
+      } else {
+        eventNameElement.style.color = 'white'; // Default color if neither
+      }
+
+      // Update event description
+      var eventDescriptionElement = document.getElementById('event-description');
+      eventDescriptionElement.textContent = eventDescription;
+
+      var modal = document.getElementById('eventModal');
+      var modalContent = document.querySelector('.modal-content');
+
+      modal.classList.add('show');
+      modalContent.classList.add('show');
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('eventModal');
+      var modalContent = document.querySelector('.modal-content');
+
+      modal.classList.remove('show');
+      modalContent.classList.remove('show');
+    }
+  </script>
+</body>
+</html>

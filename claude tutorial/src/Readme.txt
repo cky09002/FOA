@@ -1,0 +1,2 @@
+please be aware this project use claude to copy the gs file to js file. If you want to push back to your excel, use claude-push in the directory of your saved file to push back to google.
+Google API is needed to be opened

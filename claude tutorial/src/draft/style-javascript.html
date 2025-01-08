@@ -1,0 +1,28 @@
+<script>
+ document.getElementById("verifyButton").addEventListener("click", handleClick);
+
+    function handleClick() {
+      var inputnumber = {};
+
+      // Collect values from input fields
+      for (var i = 1; i <= 10; i++) {
+        inputnumber['Input' + i] = document.getElementById('Input' + i).value;
+      }
+
+      // Show the alert first
+      // alert('Fingerprint verification in progress...');
+
+      // Call the Google Apps Script function
+      google.script.run.withSuccessHandler(function(url) {
+        console.log('URL received:', url);  // Log the received URL for debugging
+        if (url) {
+          window.open(url, "_blank");
+        } else {
+          alert('No URL to play.');
+        }
+      }).withFailureHandler(function(error) {
+        console.log('Error:', error);  // Log any error received
+        alert('An error occurred: ' + error.message);
+      }).clickbutton(inputnumber);
+    }
+</script>

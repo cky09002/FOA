@@ -1,0 +1,30 @@
+{
+  "timeZone": "Asia/Singapore",
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "sheets": {
+    "macros": [
+      {
+        "menuName": "onEdit",
+        "functionName": "onEdit"
+      },
+      {
+        "menuName": "12",
+        "functionName": "_12"
+      },
+      {
+        "menuName": "ChangeColour",
+        "functionName": "ChangeColour"
+      },
+      {
+        "menuName": "onclick",
+        "functionName": "onclick"
+      }
+    ]
+  },
+  "webapp": {
+    "executeAs": "USER_ACCESSING",
+    "access": "ANYONE"
+  }
+}

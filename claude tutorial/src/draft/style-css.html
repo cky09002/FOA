@@ -1,0 +1,328 @@
+<style>
+     /* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: '', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(17, 17, 17);
+    flex-direction: column;
+}
+
+.scan {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Horizontal layout */
+}
+
+/* Left inputs */
+.inputs-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align inputs to the right */
+    margin-right: 100px; /* Adjust spacing between inputs and fingerprint */
+}
+
+/* Right inputs */
+.inputs-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align inputs to the left */
+    margin-left: 100px; /* Adjust spacing between inputs and fingerprint */
+}
+
+.inputs-left input,
+.inputs-right input {
+    margin-bottom: 30px;
+    padding: 10px;
+    font-size: 1em;
+    border: 10px solid #ccc;
+    border-radius: 30px;
+    outline: none;
+    width: 300px; /* Adjust width of inputs as needed */
+}
+
+.inputs-left input:focus,
+.inputs-right input:focus {
+    border-color: #2fff6f; /* Green border color on focus */
+    box-shadow: 0 0 5px rgba(47, 255, 111, 0.5); /* Green shadow on focus */
+}
+
+.inputs-left input::placeholder,
+.inputs-right input::placeholder {
+    color: red; /* Placeholder text color */
+    text-align: center;
+}
+
+.inputs-left input[type="text"],
+.inputs-right input[type="text"] {
+    -webkit-appearance: none; /* Remove default styling */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.inputs-left input[type="text"]:hover,
+.inputs-right input[type="text"]:hover {
+    border-color: #aaa; /* Hover border color */
+}
+
+/*verification vertical stack*/
+.verification {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Vertical layout */
+}
+
+/* Fingerprint animation */
+.fingerprint {
+    width: 300px;
+    height: 380px;
+    background: url('https://github.com/cky09002/FOA/blob/main/gray.png?raw=true') no-repeat;
+    background-size: 300px;
+    margin: 0 20px; /* Adjust margin as needed */
+    position: relative;
+}
+
+.fingerprint::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: url('https://github.com/cky09002/FOA/blob/main/green.png?raw=true') no-repeat;
+    background-size: 300px;
+    animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+    0% {
+        height: 0%;
+    }
+    50% {
+        height: 100%;
+    }
+    100% {
+        height: 0%;
+    }
+}
+
+.fingerprint::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #2fff6f;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 20px #2fff6f) drop-shadow(0 0 60px #2fff6f);
+    animation: animate_line 4s ease-in-out infinite;
+}
+
+@keyframes animate_line {
+    0% {
+        top: 0%;
+    }
+    50% {
+        top: 100%;
+    }
+    100% {
+        top: 0%;
+    }
+}
+
+/* Styling the "验证" button */
+#verifyButton {
+    padding: 15px 30px; /* Adjust padding for size */
+    font-size: 1.5em; /* Adjust font size */
+    background-color: #2fff6f;
+    color: #111;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Adjust spacing */
+}
+
+#verifyButton:hover {
+    background-color: #3fefef; /* Change color on hover */
+}
+
+/* Scanning text animation */
+span {
+    text-transform: uppercase;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    color: #2fff6f;
+    filter: drop-shadow(0 0 20px #2fff6f) drop-shadow(0 0 60px #2fff6f);
+    animation: animate_text 0.5s ease-in-out infinite;
+}
+
+@keyframes animate_text {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Heading style with  */
+.bloody-heading {
+    text-align: center;
+    font-size: 4em;
+    color: red;
+    margin-bottom: 30px;
+    position: relative;
+}
+</style>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

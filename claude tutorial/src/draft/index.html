@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanning Fingerprint</title>
+    <?!= include("style-css"); ?>
+</head>
+
+<body>
+
+    <h2 class="bloody-heading">验证：不寒而栗</h2>
+
+    <div class="scan">
+        <div class="inputs-left">
+            <input type="text" placeholder="Input 1" id= Input1 >
+            <input type="text" placeholder="Input 2" id= Input2 >
+            <input type="text" placeholder="Input 3" id= Input3 >
+            <input type="text" placeholder="Input 4" id= Input4 >
+            <input type="text" placeholder="Input 5" id= Input5 >
+        </div>
+
+        <div class="verification">
+            <div class="fingerprint"></div>
+            <span>Scanning...</span>
+            <div class="button-container">
+                <button id="verifyButton">验证</button>
+            </div>
+        </div>
+
+        <div class="inputs-right">
+            <input type="text" placeholder="Input 6" id= Input6 >
+            <input type="text" placeholder="Input 7" id= Input7 >
+            <input type="text" placeholder="Input 8" id= Input8 >
+            <input type="text" placeholder="Input 9" id= Input9 >
+            <input type="text" placeholder="Input 10" id= Input10 >
+        </div>
+    </div>
+
+    <?!=include ("style-javascript");?>
+    
+</body>
+
+</html>
+
