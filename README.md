@@ -51,12 +51,4 @@ The game was conceptualized, self-learned, and implemented in one month, and its
 
 ---
 
-## **Next Steps**  
-Future improvements might include:  
-1. Adding AI-driven events for enhanced unpredictability.  
-2. Expanding the scope with more detailed webpages or mobile compatibility.  
-3. Refining game mechanics for greater balance between parties.  
 
----
-
-Feel free to adapt or expand on this for your GitHub repository. Let me know if you'd like a Markdown-ready version or more specific additions!
