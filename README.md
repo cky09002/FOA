@@ -5,6 +5,9 @@
 A dynamic, interactive game inspired by the real-world complexities of the COVID-19 pandemic. Designed and implemented in just one month for orientation game, this project combined digital and physical gameplay to create an engaging and memorable experience for participants.
 
 ---
+# Demo Video
+https://github.com/cky09002/FOA/issues/1#issue-2914508348
+---
 
 ## **Project Overview**  
 This game involves two competing parties: **Infectors** and **Non-Infectors**, where participants navigate a series of challenges, events, and decision-making scenarios that simulate the dynamics of trust, betrayal, and cooperation during a pandemic. 
