@@ -6,7 +6,7 @@ A dynamic, interactive game inspired by the real-world complexities of the COVID
 
 ---
 # Demo Video
-https://github.com/cky09002/FOA/issues/1#issue-2914508348
+[https://github.com/cky09002/FOA/issues/1#issue-2914508348](https://github.com/user-attachments/assets/83a848e7-7261-47a3-9b80-02050d687c4e)
 ---
 
 ## **Project Overview**  
